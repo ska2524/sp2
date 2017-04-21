@@ -17,4 +17,6 @@ public interface StoreService { //비지니스 용어를 쓰는곳
 	public void remove(Integer sno) throws Exception;
 	
 	public List<StoreVO> getList(Criteria cri) throws Exception;
+	
+	public int getCount(Criteria cri)throws Exception;
 }

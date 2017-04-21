@@ -518,30 +518,56 @@
                 <tbody><tr>
                   <th style="width: 10px">#</th>
                   <th>Title</th>
-                  <th>RegDate</th>
-                  <th style="width: 40px">Label</th>
+                  <th>Info</th>
+                  <th style="width: 30px">
+                  egdate</th>.
+                   
+                  <th>Score</th>
+                  <th>%</th>
                 </tr>
                 <c:forEach var="store" items="${list}"> 
                 <tr>
                   <td>${store.sno}</td>
                   <td><a class='sview' href='${store.sno}'>${store.sname}</a></td>
+                  <td>${store.info}</td>
                   <td>${store.regdate}</td>
-                  <td>${store.updatedate}</td>
+                  
                   
                
                   <td>
                     <div class="progress progress-xs">
-                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                      <div class="progress-bar progress-bar-danger" style="width:${store.score}%"></div>
                     </div>
                   </td>
-                  <td><span class="badge bg-red">55%</span></td>
+                  <td><span class="badge bg-red">${store.score}</span></td>
                 </tr>
                 </c:forEach>
               </tbody></table>
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-            <h2>${pageMaker}</h2>
+         
+         
+         	${cri}
+          <form id="f1" action="/store/list" method="get">
+						<input type='hidden' id='hpage' name='page' value="${pageMaker.current}">
+						<input type='hidden' id='hsno' name='sno'>
+						 <div>
+            	<select name='type'>
+            	<option value='x' ${cri.type eq 'x'?"selected":""}>----</option>
+            	<option value='n' ${cri.type eq 'n'?"selected":""}>Sname</option>
+            	<option value='c' ${cri.type eq 'c'?"selected":""}>Info</option>
+            	<option value='cn' ${cri.type eq 'cn'?"selected":""}>Sname+Info</option>
+            	</select>
+							<input type='text' name='keyword' value="${cri.keyword}">
+							<button id='searchBtn'>Search</button>            
+            
+            </div>
+					</form>
+           
+            
+            
+            
               <ul class="pagination pagination-sm no-margin pull-right">
               <c:if test="${pageMaker.prev}">
                 <li><a href="${pageMaker.start-1}">«</a></li>
@@ -749,10 +775,7 @@
 	</div>
 	<!-- ./wrapper -->
 	
-<form id="f1" action="/store/list" method="get">
-<input type='hidden' id='hpage' name='page' value="${pageMaker.current}">
-<input type='hidden' id='hsno' name='sno'>
-</form>
+
 
 	<!-- jQuery 2.2.3 -->
 	<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -812,6 +835,18 @@
 			$("#f1").submit();
 			
 		})
+		
+		$("#searchBtn").on("click",function(e){
+			e.preventDefault();
+			
+			$("#hpage").val("1");
+			
+			
+			$("#f1").submit();
+			
+			
+			
+		});
 		
 		
 		

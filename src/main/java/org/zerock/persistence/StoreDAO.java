@@ -21,6 +21,8 @@ public interface StoreDAO {
 	
 	public List<StoreVO> list(Criteria cri) throws Exception;
 	
+	public int listCount(Criteria cri)throws Exception;
+	
 	
 	
 	

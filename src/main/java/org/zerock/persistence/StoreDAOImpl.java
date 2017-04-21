@@ -53,7 +53,15 @@ public class StoreDAOImpl implements StoreDAO {
 	@Override
 	public List<StoreVO> list(Criteria cri) throws Exception {
 		
-		return session.selectList(namespace+".list", cri);
+//		return session.selectList(namespace+".list", cri);
+		return session.selectList(namespace+".listTypes", cri);
+		
+	}
+
+	@Override
+	public int listCount(Criteria cri) throws Exception {
+		
+		return session.selectOne(namespace+".listCount", cri);
 	}
 
 }

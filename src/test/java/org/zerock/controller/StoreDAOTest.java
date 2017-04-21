@@ -29,15 +29,20 @@ public class StoreDAOTest {
 	@Test
 	public void testCreate() throws Exception{
 		StoreVO vo = new StoreVO();
-		vo.setSname("담소사골순대");
+		vo.setSname("담소");
 		vo.setLat(37.495582);
 		vo.setLng(127.031328);
-		vo.setInfo("순댓국 5200원!!!!");
+		vo.setInfo("순대");
 		dao.create(vo);
 	}
 	
 	@Test
 	public void testList() throws Exception{
-		dao.list(new Criteria().settingPage(2).settingSize(5)).forEach(store->logger.info(store)); //builderpatern
+		
+		Criteria cri = new Criteria();
+		cri.setType("n");
+		cri.setType("cn");
+		cri.setKeyword("33");
+		dao.list(cri).forEach(store->logger.info(store)); //builderpatern
 	}
 }

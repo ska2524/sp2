@@ -9,7 +9,14 @@ public class StoreVO {
 	private double lat, lng;
 	private String info, gubun;
 	private Timestamp regdate, updatedate;
+	private Integer score;
 	
+	public Integer getScore() {
+		return score;
+	}
+	public void setScore(Integer score) {
+		this.score = score;
+	}
 	public int getSno() {
 		return sno;
 	}

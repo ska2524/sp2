@@ -44,4 +44,10 @@ public class StoreServiceImpl implements StoreService {
 		return dao.list(cri);
 	}
 
+	@Override
+	public int getCount(Criteria cri) throws Exception {
+		
+		return dao.listCount(cri);
+	}
+
 }
