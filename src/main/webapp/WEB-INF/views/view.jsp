@@ -36,13 +36,15 @@
 $(document).ready(function(e) {
 	
 	$("#modBtn").click(function(e){
+		var obj = {reText:$("#reText").val(),replyer:$("#replyer").val()};
 		
 		$.ajax({
-			type:'post',
+			type:'put',
 			url:'replies/321/21',
 			headers: { 
 				     "Content-Type": "application/json",
-				      "X-HTTP-Method-Override": "PUT" },
+				      "X-HTTP-Method-Override": "post" },
+			data:JSON.stringify(obj),
 			success:function(msg){
 				console.log(msg)
 				
