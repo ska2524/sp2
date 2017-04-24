@@ -14,7 +14,7 @@ public class Criteria {//검색기준
 
 
 	public Criteria(){
-		this.page = 1;
+		this.page = 10;
 		this.size = 10;
 		 
 		
